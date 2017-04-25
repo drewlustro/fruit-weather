@@ -1,0 +1,26 @@
+{
+  "name": "fruit-weather",
+  "version": "1.0.0",
+  "description": "Displays weather on TFT backpack RasPi, in conjunction with drewlustro/weather-proxy",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "npm run build && node build/index.js",
+    "build": "babel src/ -d build/",
+    "dev": "npm run build && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Drew Lustro",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "eslint": "^3.12.0",
+    "eslint-config-airbnb": "^13.0.0"
+  },
+  "repository": "https://github.com/drewlustro/fruit-weather",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.7.5"
+  }
+}
