@@ -34,13 +34,14 @@ const WEATHER_URL = 'http://weather-proxy.maxrelax.co/weather.json'
 const WEATHER_DATA = require('./fixtures/weather-data-initial')
 const ROWS = 20
 const COLS = 30
-const PRIMARY_LCD_HEIGHT = Math.floor(ROWS * 0.7)
+const PRIMARY_LCD_HEIGHT = Math.floor(ROWS * 0.62)
 const FUTURES_LCD_HEIGHT = ROWS - PRIMARY_LCD_HEIGHT
 const FUTURES_LCD_WIDTH = Math.floor(COLS / 3)
 
 Object.assign(options, {
   elements: 2,
-
+  elementPadding: 2,
+  elementSpacing: 2
 });
 let grid = new contrib.grid({
   rows: ROWS,
@@ -48,14 +49,14 @@ let grid = new contrib.grid({
   screen: screen /* hideBorder: true, */
 });
 
-// grid.set(row, col, rowSpan, colSpan, obj, opts)
+
 let lcd0 = grid.set(
   0,
   0,
   PRIMARY_LCD_HEIGHT,
   COLS,
   contrib.lcd,
-  Object.assign({}, options)
+  Object.assign({}, options, { elementPadding: 4 })
 );
 let lcd1 = grid.set(
   PRIMARY_LCD_HEIGHT,
@@ -77,48 +78,43 @@ let lcd3 = grid.set(
   PRIMARY_LCD_HEIGHT,
   FUTURES_LCD_WIDTH * 2,
   FUTURES_LCD_HEIGHT,
-  FUTURES_LCD_WIDTH,
+  FUTURES_LCD_WIDTH + 1,
   contrib.lcd,
   Object.assign({}, options)
 );
+
+let lcds = [lcd0, lcd1, lcd2, lcd3]
 
 // every half hour
 setInterval(updateWeatherData, (60 * 30) * 1000)
 setTimeout(updateWeatherData, 2000)
 
 screen.key(['k'], function (ch, key) {
-  lcd0.increaseWidth();
-  lcd1.increaseWidth();
+  lcds.forEach(x => x.increaseWidth())
   updateDisplay()
 });
 screen.key(['j'], function (ch, key) {
-  lcd0.decreaseWidth();
-  lcd1.decreaseWidth();
+  lcds.forEach(x => x.decreaseWidth())
   updateDisplay()
 });
 screen.key(['t'], function (ch, key) {
-  lcd0.increaseInterval();
-  lcd1.increaseInterval();
+  lcds.forEach(x => x.increaseInterval())
   updateDisplay()
 });
 screen.key(['y'], function (ch, key) {
-  lcd0.decreaseInterval();
-  lcd1.decreaseInterval();
+  lcds.forEach(x => x.decreaseInterval())
   updateDisplay()
 });
 screen.key(['b'], function (ch, key) {
-  lcd0.increaseStroke();
-  lcd1.increaseStroke();
+  lcds.forEach(x => x.increaseStroke())
   updateDisplay()
 });
 screen.key(['n'], function (ch, key) {
-  lcd0.decreaseStroke();
-  lcd1.decreaseStroke();
+  lcds.forEach(x => x.decreaseStroke())
   updateDisplay()
 });
 
 screen.key(['1'], function (ch, key) {
-  console.log('updateWeatherData ------------------------')
   updateWeatherData()
 });
 
