@@ -35,8 +35,7 @@ const WEATHER_DATA = require('./fixtures/weather-data-initial')
 const ROWS = 20
 const COLS = 30
 const PRIMARY_LCD_HEIGHT = Math.floor(ROWS * 0.62)
-const FUTURES_LCD_HEIGHT = ROWS - PRIMARY_LCD_HEIGHT
-const FUTURES_LCD_WIDTH = Math.floor(COLS / 3)
+const FUTURES_LCD_HEIGHT = ROWS - PRIMARY_LCD_HEIGHT const FUTURES_LCD_WIDTH = Math.floor(COLS / 3)
 
 Object.assign(options, {
   elements: 2,
@@ -85,8 +84,8 @@ let lcd3 = grid.set(
 
 let lcds = [lcd0, lcd1, lcd2, lcd3]
 
-// every half hour
-setInterval(updateWeatherData, (60 * 30) * 1000)
+// every 5 min
+setInterval(updateWeatherData, (60 * 5) * 1000)
 setTimeout(updateWeatherData, 2000)
 
 screen.key(['k'], function (ch, key) {
