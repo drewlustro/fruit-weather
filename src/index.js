@@ -39,7 +39,8 @@ const FUTURES_LCD_HEIGHT = ROWS - PRIMARY_LCD_HEIGHT
 const FUTURES_LCD_WIDTH = Math.floor(COLS / 3)
 
 Object.assign(options, {
-  elements: 3,
+  elements: 2,
+
 });
 let grid = new contrib.grid({
   rows: ROWS,
@@ -180,9 +181,9 @@ function getTemperatureForDisplay(displayId) {
 
   temperature = Math.round(temperature)
   let tempStr = String(temperature)
-  if (tempStr.length <= 1) return ` ${temperature}`
-  if (tempStr.length <= 2) return ` ${temperature}`
-  if (tempStr.length <= 3) return ` ${temperature}`
+  if (tempStr.length <= 1) return `${temperature}`
+  if (tempStr.length <= 2) return `${temperature}`
+  if (tempStr.length <= 3) return `${temperature}`
   return `${temperature}`
 
 }
