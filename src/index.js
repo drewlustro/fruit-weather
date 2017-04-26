@@ -5,6 +5,8 @@
  * @copyright Maxrelax Inc
  */
 
+'use strict'
+
 const request = require('request')
 const chalk = require('chalk');
 const log = console.log;
@@ -178,8 +180,8 @@ function getTemperatureForDisplay(displayId) {
 
   temperature = Math.round(temperature)
   let tempStr = String(temperature)
-  if (tempStr.length <= 1) return `  ${temperature}`
-  if (tempStr.length <= 2) return `  ${temperature}`
+  if (tempStr.length <= 1) return ` ${temperature}`
+  if (tempStr.length <= 2) return ` ${temperature}`
   if (tempStr.length <= 3) return ` ${temperature}`
   return `${temperature}`
 
