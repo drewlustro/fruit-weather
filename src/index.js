@@ -30,12 +30,13 @@ const DISPLAY = {
   DISTANT: 3
 }
 
-const WEATHER_URL = 'http://weather-proxy.maxrelax.co/weather.json'
-const WEATHER_DATA = require('./fixtures/weather-data-initial')
-const ROWS = 20
-const COLS = 30
-const PRIMARY_LCD_HEIGHT = Math.floor(ROWS * 0.62)
-const FUTURES_LCD_HEIGHT = ROWS - PRIMARY_LCD_HEIGHT const FUTURES_LCD_WIDTH = Math.floor(COLS / 3)
+const WEATHER_URL = "http://weather-proxy.maxrelax.co/weather.json";
+const WEATHER_DATA = require("./fixtures/weather-data-initial");
+const ROWS = 20;
+const COLS = 30;
+const PRIMARY_LCD_HEIGHT = Math.floor(ROWS * 0.62);
+const FUTURES_LCD_HEIGHT = ROWS - PRIMARY_LCD_HEIGHT;
+const FUTURES_LCD_WIDTH = Math.floor(COLS / 3);
 
 Object.assign(options, {
   elements: 2,
